@@ -14,5 +14,14 @@ public class Queen
     String converter = "ABCDEFGH";
     return "\u2655 " + converter.charAt(file) + "" + (rank + 1);
   }
-  
+
+  public int getFile()
+  {
+    return file;
+  }
+
+  public int getRank()
+  {
+    return rank;
+  }
 }

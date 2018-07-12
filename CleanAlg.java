@@ -40,21 +40,10 @@ public class CleanAlg{
     PrintStream ps = new PrintStream(fos);
     System.setOut(ps);
 
-    long startTime; //start time
-		long endTime;
-    double time;
-    startTime = System.currentTimeMillis();
-
-    Board instanceBoard = new Board();
-    instanceBoard.plotQueens(1, 4, 18, 25, 36, 47, 51, 64);
-    if (instanceBoard.isCorrect()) solutions.add(instanceBoard);
-
     CleanAlg ca = new CleanAlg();
     ca.run();
 
-
-    endTime = System.currentTimeMillis();
-    time = (endTime - startTime) / 1000.0;
-    System.out.println("\nElapsed Time is:  " + time);
+    System.out.println(solutions.size());
+    for(Board board : solutions) System.out.println(board);
   }
 }

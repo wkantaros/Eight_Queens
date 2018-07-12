@@ -32,16 +32,6 @@ public class Board
     }
   }
 
-  public char[][] getBoard()
-  {
-    return board;
-  }
-
-  public ArrayList<Queen> getQueens()
-  {
-    return queens;
-  }
-
   public void addPiece(Queen piece)
   {
     board[piece.getRank()][piece.getFile()] = '\u2655';
