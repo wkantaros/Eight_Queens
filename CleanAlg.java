@@ -1,29 +1,27 @@
 import java.util.ArrayList;
 
-public class CleanAlg{
+// to save to a file
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.PrintStream;
 
-  /*TODO:
-    * Make Queen() contructor that only takes one int value
-    * Make plotQueens method(Queen[] queens) in Board.java
-    * Make a correct() method  in Board.java
-    * Clean Up files for accessability
-  */
+public class CleanAlg{
 
   private static ArrayList<Board> solutions = new ArrayList<Board>();
 
   public void run(){
-    for(int a = 0; a <= 57; a++){
-      for(int b = a+1; b <= 58; b++){
-        for(int c = b+1; c <= 59; c++){
-          for(int d = c+1; d <= 60; d++){
-            for(int e = d+1; e <= 61; e++){
-              for(int f = e+1; f <= 62; f++){
-                for(int g = f+1; g <= 63; g++){
-                  for(int h = g+1; h <= 64; h++){
-                    // Board instanceBoard = new Board();
-                    Queen[] queens = new Queen[8]; // faster than arrayList
-                    // instanceBoard.plotQueens(a, b, c, d, e, f, g, h)
-                    // if (instanceBoard.correct()) solutions.add(instanceBoard)
+    for(int a = 1; a <= 8; a++){
+      for(int b = 9; b <= 16; b++){
+        for(int c = 17; c <= 24; c++){
+          for(int d = 25; d <= 32; d++){
+            for(int e = 33; e <= 40; e++){
+              for(int f = 41; f <= 48; f++){
+                for(int g = 49; g <= 56; g++){
+                  for(int h = 57; h <= 64; h++){
+                    Board instanceBoard = new Board();
+                    instanceBoard.plotQueens(a, b, c, d, e, f, g, h);
+                    if (instanceBoard.isCorrect()) solutions.add(instanceBoard);
                   }
                 }
               }
@@ -32,5 +30,31 @@ public class CleanAlg{
         }
       }
     }
+  }
+
+  public static void main(String[] args) throws FileNotFoundException {
+
+    // Saves to a file rather than to the terminal
+    File file = new File("Solutions.txt");
+    FileOutputStream fos = new FileOutputStream(file);
+    PrintStream ps = new PrintStream(fos);
+    System.setOut(ps);
+
+    long startTime; //start time
+		long endTime;
+    double time;
+    startTime = System.currentTimeMillis();
+
+    Board instanceBoard = new Board();
+    instanceBoard.plotQueens(1, 4, 18, 25, 36, 47, 51, 64);
+    if (instanceBoard.isCorrect()) solutions.add(instanceBoard);
+
+    CleanAlg ca = new CleanAlg();
+    ca.run();
+
+
+    endTime = System.currentTimeMillis();
+    time = (endTime - startTime) / 1000.0;
+    System.out.println("\nElapsed Time is:  " + time);
   }
 }
