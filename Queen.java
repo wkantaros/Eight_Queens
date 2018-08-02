@@ -4,7 +4,6 @@ public class Queen
 
   public Queen(int num)
   {
-    num--;
     file = num / 8;
     rank = num % 8;
   }

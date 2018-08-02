@@ -38,17 +38,10 @@ public class Board
     queens.add(piece);
   }
 
-  public boolean isCorrect()
+  public boolean checkDiagonals()
   {
     for (Queen q : queens)
     {
-      for(int i = 0; i < 8; i++)
-      {
-        if (board[q.getRank()][i] == '\u2655' && (i != q.getRank()) && (i != q.getFile()))
-          return false;
-        if (board[i][q.getFile()] == '\u2655' && (i != q.getRank()) && (i != q.getFile()))
-          return false;
-      }
       for(int i = -1; i + q.getFile() >= 0 && i + q.getRank() >= 0; i--)
         if(board[q.getRank() + i][q.getFile() + i] == '\u2655') return false;
       for(int i = 1; i + q.getFile() <= 7 && i + q.getRank() <= 7; i++)
